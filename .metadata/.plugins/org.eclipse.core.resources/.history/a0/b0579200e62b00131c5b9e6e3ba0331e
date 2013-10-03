@@ -78,7 +78,6 @@ public class MainActivity extends Activity {
         // Add text field and buttons to new layout
         form.addView(nameField);
         form.addView(phonesField);
-        form.addView(b);
 
         
         // Add new form layout to original view
