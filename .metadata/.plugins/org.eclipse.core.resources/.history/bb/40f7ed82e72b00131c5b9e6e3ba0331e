@@ -3,7 +3,7 @@ package com.ayottewillson.week1;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
-import android.view.Menu;
+//import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -78,7 +78,7 @@ public class MainActivity extends Activity {
 				// Display a greeting
 				result.setText("Hello "+ nameField.getText().toString() + "!\r\nOur data plans cost $"+dataPrice+" per plan.\r\n");
 				
-				// check if or name and phone number is entered
+				// Check if we have a name entered
 			if (nameField != null && phonesField != null) 
 			{		
 				for (int i=1, j=numPhones+1; i<j; i++)
@@ -94,7 +94,7 @@ public class MainActivity extends Activity {
 				// If no name is entered, display message.
 				else 
 				{
-					result.append("You need to enter your information. Please try again.");
+					result.append("You need to enter your information.  Please try again.");
 				}
 
 			if (numPhones > 3)
@@ -159,12 +159,6 @@ public class MainActivity extends Activity {
         setContentView(ll);
         
     }
-	
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+        
     
 }
