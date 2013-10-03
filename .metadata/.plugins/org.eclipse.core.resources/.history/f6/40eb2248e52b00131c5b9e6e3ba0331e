@@ -65,7 +65,19 @@ public class MainActivity extends Activity {
 
 				// Dismiss the keyboard so we can see our text
 				InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-				imm.hideSoftInputFromWindow(phonesField.getWindowToken(), 0);				
+				imm.hideSoftInputFromWindow(phonesField.getWindowToken(), 0);
+
+				// Setup variables to be used in this function
+				int numPlans = getResources().getInteger(R.integer.numPlans);
+				int dataPrice = getResources().getInteger(R.integer.dataPrice);
+				int numPhones = Integer.parseInt(phonesField.getText().toString());				
+
+				// Calculate the total number of data plans from the number of phones entered
+				totalPhones = numPlans*numPhones;
+
+				// Displays First text
+				result.setText("Hello "+ nameField.getText().toString() + "!\r\nOur data plans cost $"+dataPrice+" per plan.\r\n");
+
 			}
 		});
         

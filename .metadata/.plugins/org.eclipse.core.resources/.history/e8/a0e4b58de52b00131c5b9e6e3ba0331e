@@ -1,0 +1,6 @@
+<resources>
+    
+    <integer name="numPlans">2</integer>
+    <integer name="dataPrice">39</integer>
+    
+</resources>
