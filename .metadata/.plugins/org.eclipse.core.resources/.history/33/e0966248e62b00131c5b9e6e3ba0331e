@@ -69,18 +69,6 @@ public class MainActivity extends Activity {
 			}
 		});
         
-     // Clear Button
-        Button c = new Button(this);
-        c.setText("Clear");
-        c.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-			
-			}
-		});
-        
      // Create the Layout for our app and setup the parameters
         LinearLayout form = new LinearLayout(this);
         form.setOrientation(LinearLayout.VERTICAL);
@@ -91,7 +79,6 @@ public class MainActivity extends Activity {
         form.addView(nameField);
         form.addView(phonesField);
         form.addView(b);
-        form.addView(c);
 
         
         // Add new form layout to original view

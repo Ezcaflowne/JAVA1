@@ -77,7 +77,14 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 
-			
+				// Empty result textView and pricePerPhone textView
+				result.setText("");
+				pricePerPhone.setText("");
+				// Empty out my fields for reuse
+				nameField.setText("");
+				phonesField.setText("");	
+				// Reset boolean
+				runSpecial = false;
 			}
 		});
         
