@@ -1,0 +1,32 @@
+package com.ayottewillson.lib;
+
+
+/**
+ * The Class Location
+ */
+public class Location implements Weather {
+
+	/** The zip. */
+	String zip;
+
+//	/**
+//	 * Instantiates a new location.
+//	 *
+//	 * @param zip the zip
+//	 */
+	public Location(String zip) {
+		setZip(zip);
+	}
+
+	@Override
+	public boolean setZip(String zip) {
+		this.zip = zip;
+		return true;
+	}
+
+	@Override
+	public String getZip() {
+		return this.zip;
+	}
+
+}

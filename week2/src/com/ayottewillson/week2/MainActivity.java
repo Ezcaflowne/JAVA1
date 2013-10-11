@@ -1,6 +1,12 @@
 package com.ayottewillson.week2;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -9,50 +15,73 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-public class MainActivity {
-	public static LinearLayout singleEntryWithButton(Context context, String hint, String buttonText) {
-		// Create linear layout and parameters
-		LinearLayout lLayout = new LinearLayout(context);
-		LayoutParams lParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+import com.ayottewillson.week2.R;
+import com.ayottewillson.lib.Forms;
+import com.ayottewillson.lib.JSON;
+
+public class MainActivity extends Activity {
+    //Creates Radio groups
+	RadioGroup weatherLocations;
+	TextView resultText;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		LinearLayout lLayout = new LinearLayout(this);
+		LayoutParams lParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		lLayout.setLayoutParams(lParams);
+		lLayout.setOrientation(LinearLayout.VERTICAL);
 
-		// Create edit text
-		EditText editText = new EditText(context);
-		// Set parameters for edit text to take up full width
-		lParams = new LayoutParams(0, LayoutParams.WRAP_CONTENT, 1.0f);
-		editText.setHint(hint);
-		editText.setLayoutParams(lParams);
-		editText.setId(1);
+		// String values from resource
+		String eHint = getResources().getString(R.string.edit_hint);
+		String bText = getResources().getString(R.string.button_text);
+		
+		LinearLayout entryBox = Forms.singleEntryWithButton(this, eHint, bText);
+		
+		//EditText
+		Button button1 = (Button) entryBox.findViewById(2);
+		button1.setOnClickListener(new View.OnClickListener() {
+			// On click listener
+			@Override
+			public void onClick(View v) {
+				EditText userInput1 = (EditText) v.getTag();
+				String txt = userInput1.getText().toString();
+				//Logging info out
+				Log.i("BUTTON CLICKED",txt ); 
+				
+				// Dismiss the keyboard so we can see our text
+				InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+				imm.hideSoftInputFromWindow(userInput1.getWindowToken(), 0);
+				
+				//Resulted output
+				int selectedRadioId = weatherLocations.getCheckedRadioButtonId();
+				RadioButton selectedRadio = (RadioButton) weatherLocations.findViewById(selectedRadioId);
+				String selected = selectedRadio.getText().toString();
+				resultText.setText(JSON.readJSON(selected)+"\r\nFor zip Code: "+txt);
+			}
+		});
+		// Set radio group
+		String[] locationNames = {"Summerlin", "Henderson", "Pharump","Vegas"};
+		weatherLocations = Forms.radioGroupOptions(this, locationNames);
 
-		// Create button
-		Button getButton = new Button(context);
-		getButton.setText(buttonText);
-		getButton.setId(2);
-		// Tag button with edit text object
-		getButton.setTag(editText);
+		// Set result text view - Pull in JSON data
+		resultText = Forms.showResults(this);
+		resultText.setText("Make a selection for the current weather");
 
 		// Add UI elements to linear layout
-		lLayout.addView(editText);
-		lLayout.addView(getButton);
+		lLayout.addView(entryBox);
+		lLayout.addView(weatherLocations);
+		lLayout.addView(resultText);
 
-		return lLayout;
+		setContentView(lLayout);
 	}
-	public static  RadioGroup radioGroupOptions(Context context, String[] location) {
-		RadioGroup rGroup = new RadioGroup(context);
 
-		for (int i = 0; i < location.length; i++) {
-			RadioButton rButton = new RadioButton(context);
-			rButton.setText(location[i]);
-			rButton.setId(i+1);
-			rGroup.addView(rButton);
-		}
-
-		return rGroup;
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
 	}
-	public static TextView showResults(Context context) {
-		TextView textView = new TextView(context);
-		textView.setId(3);
 
-		return textView;
-	}
 }
