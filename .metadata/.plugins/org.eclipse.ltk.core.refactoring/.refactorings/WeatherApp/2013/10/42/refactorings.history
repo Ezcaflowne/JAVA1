@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;WeatherApp/src/com/ayottewillson/weatherapp/SearchForm&apos; to &apos;SearchForm.java&apos;" description="Rename resource &apos;SearchForm&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/com/ayottewillson/weatherapp/SearchForm" name="SearchForm.java" stamp="1381985052068" updateReferences="true"/>
+</session>
