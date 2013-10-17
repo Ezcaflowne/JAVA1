@@ -14,13 +14,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import com.ayottewillson.library.FileSystem;
+import com.ayottewillson.library.Web;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-
 
 public class MainActivity extends Activity {
 
@@ -65,7 +66,7 @@ public class MainActivity extends Activity {
         //Logs out the history data
         Log.i("HISTORY READ", _history.toString());
 
-        // Declare resource string
+        //declare resource string
         String _hint = getResources().getString(R.string.search_hint);
         String _buttonText = getResources().getString(R.string.search_button_text);
 
