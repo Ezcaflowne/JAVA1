@@ -8,20 +8,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+//Class SearchForm
 @SuppressLint("ViewConstructor")
 public class SearchForm extends LinearLayout {
 
     //Create variables
-	//search field
+    //search field
     EditText _searchField;
-
-    //The lp
+    
+    //lp
     LayoutParams _lp;
     
-    //The search button
+    //search button
     Button _searchButton;
 
-	//creates a new search form.
+    //creates a new search form.
     public SearchForm(Context context, String hint, String buttonText) {
         super(context);
         //Set layout params
@@ -43,13 +44,13 @@ public class SearchForm extends LinearLayout {
         this.addView(_searchField);
         this.addView(_searchButton);
     }
-
-	//Gets the field
+    
+    //Gets the field
     public EditText getField() {
         return _searchField;
     }
 
-	//Gets the button.
+	//Gets the button
     public Button getButton() {
         return _searchButton;
     }

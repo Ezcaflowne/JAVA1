@@ -12,13 +12,10 @@ import java.io.ObjectOutputStream;
 import android.content.Context;
 import android.util.Log;
 
-//The Class FileSystem.
+
 public class FileSystem {
 
-    //Declare variables
-    //Context _context;
-
-    //Store string file.
+	//Store string file
     @SuppressWarnings("resource")
 	public static Boolean storeStringFile(Context context, String filename, String content, Boolean external) {
         try {
@@ -39,7 +36,7 @@ public class FileSystem {
         return true;
     }
 
-    //Store object file.
+	//Store object file.
     @SuppressWarnings("resource")
 	public static Boolean storeObjectFile(Context context, String filename, Object content, Boolean external) {
         try {
@@ -62,7 +59,7 @@ public class FileSystem {
         return true;
     }
 
-    //Read string file.
+	//Read string file
     @SuppressWarnings("resource")
 	public static String readStringFile(Context context, String filename, Boolean external) {
         String content = "";
@@ -81,7 +78,7 @@ public class FileSystem {
             BufferedInputStream bin = new BufferedInputStream(fin);
             byte[] contentBytes = new byte[1024];
             int bytesRead = 0;
-            //calling stringbuilder
+            //StringBulider is a safer call than StringBuffer
             StringBuilder contentBuffer = new StringBuilder();
 
             while ((bytesRead = bin.read(contentBytes)) != -1) {
@@ -97,8 +94,8 @@ public class FileSystem {
         }
         return content;
     }
-    
-    //Read object file.
+
+	//Read object file
     @SuppressWarnings("resource")
 	public static Object readObjectFile(Context context, String filename, Boolean external) {
         Object content = new Object();

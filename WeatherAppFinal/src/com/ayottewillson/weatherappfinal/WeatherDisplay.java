@@ -4,11 +4,12 @@ import android.content.Context;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
-	//The Class WeatherDisplay.
+
+///Class WeatherDisplay
 public class WeatherDisplay extends GridLayout {
 
     //Create variables
-	//context
+    //context
     Context _context;
     
     //description
@@ -29,7 +30,7 @@ public class WeatherDisplay extends GridLayout {
     //wind direction
     TextView _windDirection;
 
-	//creates a new weather display.
+    //creates a new weather display
     public WeatherDisplay(Context context) {
         super(context);
 
@@ -78,7 +79,6 @@ public class WeatherDisplay extends GridLayout {
         this.addView(_windDirection);
     }
 
-    //Sets the weather info
     public void setWeatherInfo(String descriptionText, String tempFText, String tempCText, String humidityText, String windSpeedText, String windDirText) {
         //Set text in GridLayout
     	//description text

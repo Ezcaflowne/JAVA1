@@ -24,6 +24,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ayottewillson.library.FileSystem;
+import com.ayottewillson.library.Web;
+
+//Class MainActivity.
 public class MainActivity extends Activity {
 
     //Global variables
@@ -33,11 +37,11 @@ public class MainActivity extends Activity {
     //history
     HashMap<String, String> _history;
     
-    //connected
+    //is connected
     Boolean _isConnected = false;
+    
 
-
-	//Creates the layout
+	//Creates the layout.
     public void createLayout() {
         //Declare variables
         _context = this;
@@ -58,7 +62,7 @@ public class MainActivity extends Activity {
 
                 //Check to make sure entered value is valid zip
                 if (field.getText().toString().length() != 5) {
-                    //create popup
+                    //Create popup
                     Toast toast = Toast.makeText(_context,"Bad Zip", Toast.LENGTH_SHORT);
                     toast.show();
                 } else {
@@ -135,7 +139,7 @@ public class MainActivity extends Activity {
         return history;
     }
 
-	//The Class weatherRequest.
+    //Class weatherRequest
     private class weatherRequest extends AsyncTask<URL, Void, String> {
 
         @Override
@@ -161,7 +165,7 @@ public class MainActivity extends Activity {
                     Toast toast = Toast.makeText(_context,"Bad Zip", Toast.LENGTH_SHORT);
                     toast.show();
                 } else {
-                    // Get JSON data
+                    //Get JSON data
                     JSONArray results = json.getJSONObject("data").getJSONArray("current_condition");
                     String request = json.getJSONObject("data").getJSONArray("request").getJSONObject(0).getString("query");
 
@@ -231,7 +235,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         //Set content from XML layout
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.form);
 
         //Call createLayout method
         createLayout();
@@ -239,7 +243,7 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        //Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
